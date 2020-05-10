@@ -38,13 +38,13 @@ add_float_neon1(result2, src1, src2, SIZE);
 int64_t t3 = getTimeInUs();
 
 LOGD("test NEON before into neon assembly.");
-add_float_neon3_aarch32(result3, src1, src2, SIZE);
+//add_float_neon3_aarch32(result3, src1, src2, SIZE);
 LOGD("test NEON after into neon assembly.");
 int64_t t4 = getTimeInUs();
 
-LOGD("test NEON add float array in c, time: %d us", (t2 - t1));
-LOGD("test NEON add float array in NEON, time：%d us", (t3 - t2));
-LOGD("test NEON add float array in inline assembly, time: %d", (t4 - t3));
+LOGD("test NEON add float array in c, time: %d ms", (t2 - t1)/1000);
+LOGD("test NEON add float array in NEON, time：%d ms", (t3 - t2)/1000);
+LOGD("test NEON add float array in inline assembly, time: %d ms", (t4 - t3)/1000);
 
 for(int i = 0; i < SIZE; i++) {
     float comp1 = result1[i] - result2[i];
@@ -69,6 +69,8 @@ void add_float_c(float* dst, float* src1, float* src2, int count)
         dst[i] = src1[i] + src2[i];
     }
 }
+
+
 
 void add_float_neon1(float* dst, float* src1, float* src2, int count)
 
@@ -97,6 +99,8 @@ void add_float_neon1(float* dst, float* src1, float* src2, int count)
     // LOGD("test NEON, i: %d", i);
 }
 
+
+/*
 // Armv7-A/AArch32
 void add_float_neon3_aarch32(float* dst, float* src1, float* src2, int count)
 {
@@ -115,6 +119,7 @@ void add_float_neon3_aarch32(float* dst, float* src1, float* src2, int count)
     );
 }
 
+*/
 
 /*
 // AArch64
@@ -133,5 +138,5 @@ void add_float_neon3_aarch64(float* dst, float* src1, float* src2, int count)
     : "memory", "v0", "v1"
     );
 }
- */
+*/
 

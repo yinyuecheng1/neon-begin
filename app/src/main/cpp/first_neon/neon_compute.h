@@ -25,7 +25,7 @@ void add_float_c(float* dst, float* src1, float* src2, int count);
 
 void add_float_neon1(float* dst, float* src1, float* src2, int count);
 
-void add_float_neon3_aarch32(float* dst, float* src1, float* src2, int count);
+//void add_float_neon3_aarch32(float* dst, float* src1, float* src2, int count);
 
 //void add_float_neon3_aarch64(float* dst, float* src1, float* src2, int count);
 
